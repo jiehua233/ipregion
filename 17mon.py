@@ -1,19 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import struct
-from ipip import IP
+import ipip
 
 
 
 def main():
-    IP.load('17monipdb.dat')
-    print IP.offset
-    print len(IP.index)
+    ipip.IP.load('17monipdb.dat')
+    for i in range(256):
+        o = i * 4
+        start, = ipip._unpack_V(ipip.IP.index[o:o+4])
+        print start
+
+    print ipip.IP.offset
+    print len(ipip.IP.index)
 
 
 if __name__ == "__main__":
-    str = struct.pack('>i', 20)
-    print repr(str)
-    print len(str)
     main()
