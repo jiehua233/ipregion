@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+该脚本作用:
+    从17monipdb.dat中获取ip数据段保存到数据库中
+"""
+
 import utils
 import ipip
 import torndb

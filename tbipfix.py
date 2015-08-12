@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+该脚本作用:
+    根据17monip的ip段,抓取淘宝ip库,同时进行ip段校验;
+    实测: 速度太慢了,不可行
+"""
 import torndb
 import requests
 import time

@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+该脚本作用:
+    根据17monip的ip段抓取淘宝数据,获取较为详细的ip数据
+"""
+
 import torndb
 import requests
 import time
@@ -8,7 +13,7 @@ import time
 db = torndb.Connection('localhost', 'ip2loc', 'root', 'jiehua123')
 
 def main():
-    ips = db.query("SELECT * FROM `17monip_fix` WHERE id > 20")
+    ips = db.query("SELECT * FROM `17monip`")
     for ip in ips:
         print ip['id'], ip['start']
         ip_s_d = getinfo(ip['start'])
