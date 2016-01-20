@@ -1,5 +1,14 @@
 ## IP归属地查询
 
+### 环境搭建 
+
+Infobright新建数据库
+
+```sql
+CREATE DATABASE IF NOT EXISTS `ipregion` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `ipregion`;
+```
+
 ### 数据来源
 
 * 基于17monip(www.ipip.net免费版数据库)
