@@ -10,11 +10,13 @@
 import falcon
 import ujson as json
 from wsgiref import simple_server
+from statsd import StatsClient
 
 import config
 from lib import torndb
 from lib import utils
 
+statsd = StatsClient(**config.STATSD)
 
 def validate_ip(req, resp, resource, params):
     ip = params.get("ip")
@@ -33,10 +35,13 @@ class IpResource(object):
         for ip in ipdat:
             self.ip_list.append(ip["start_int"])
 
+    @statsd.timer("request")
     @falcon.before(validate_ip)
     def on_get(self, req, resp, ip):
+        statsd.incr("query")
         ip_start = self.get_start(ip)
-        info = self.ib.get('SELECT * FROM `ipregion` WHERE `start_int` = %s', ip_start)
+        with statsd.timer("sql_query"):
+            info = self.ib.get('SELECT * FROM `ipregion` WHERE `start_int` = %s', ip_start)
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(info)
 
