@@ -4,16 +4,7 @@
 
 安装依赖包
 
-    $ pip install -r requirements.txt 
-
-Infobright新建数据库
-
-    $ mysql-ib -uroot -p
-
-```sql
-mysql> CREATE DATABASE IF NOT EXISTS `ipregion` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-mysql> USE `ipregion`;
-```
+    $ pip install -r etc/requirements.txt 
 
 从[17monip](http://www.ipip.net)中获取ip数据源
 
@@ -23,9 +14,9 @@ mysql> USE `ipregion`;
 
     $ python main.py --scrapytbip
 
-将数据导入infobright
+将数据导入MySQL
 
-    $ python main.py --initdb 
+    $ python main.py --loaddb
 
 服务测试
 
