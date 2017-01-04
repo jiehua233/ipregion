@@ -1,27 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-INFOBRIGHT = {
-    "host": "127.0.0.1:5029",
+MYSQL = {
+    "host": "127.0.0.1:3306",
     "user": "root",
     "password": "root",
     "database": "ipregion",
-    "local_infile": 1,
-}
-
-SERVER = {
-    "host": "127.0.0.1",
-    "port": 9999,
-}
-
-STATSD = {
-    "host": "127.0.0.1",
-    "port": 8125,
-    "prefix": "api.ipregion",
 }
 
 """Gunicorn setting"""
-bind = "127.0.0.1:9999"
+bind = "127.0.0.1:28001"
 workers = 1
 worker_class = "gevent"
 accesslog = "-"     # log to stderr

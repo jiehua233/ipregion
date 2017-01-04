@@ -44,10 +44,9 @@ def parse_17monip():
             s_int = e_int + 1
 
 
-
 def scrapy_tbip():
     with open('./data/tbip.dat', 'ab') as f:
-        for line in xrange_file():
+        for line in xrange_monip():
             s = line.strip().split("\t")
             ip = {
                 "si": s[0],
@@ -62,7 +61,8 @@ def scrapy_tbip():
 ","%(city_id)s","%(county)s","%(county_id)s","%(isp)s","%(isp_id)s"\n' % ip
             f.write(info)
 
-def xrange_file():
+
+def xrange_monip():
     with open('./data/monip.dat', 'rb') as f:
         for line in f:
             yield line.strip()
@@ -81,7 +81,3 @@ def get_tbip_info(ip):
                 time.sleep(1)
         except:
             time.sleep(1)
-
-
-
-
